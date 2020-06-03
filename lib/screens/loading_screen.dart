@@ -2,7 +2,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mylibrary/screens/home_screen.dart';
+
+import 'package:mylibrary/screens/welcome_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
   static const id = "loading_screen";
@@ -54,7 +55,7 @@ class _LoadingScreenState extends State<LoadingScreen>
   void initHomePage() async {
     String s = await Future.delayed(Duration(seconds: 10), () => "hi");
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return HomeScreen();
+      return WelcomeScreen();
     }));
   }
 

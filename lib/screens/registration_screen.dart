@@ -22,10 +22,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Image.network(
-              'https://www.rd.com/wp-content/uploads/2017/10/This-Is-How-Long-It-Takes-To-Read-The-Whole-Dictionary_509582812-Billion-Photos_FB-e1574101045824.jpg',
-              height: 120,
-              fit: BoxFit.fill,
+            Flexible(
+              child: Image.network(
+                'https://www.rd.com/wp-content/uploads/2017/10/This-Is-How-Long-It-Takes-To-Read-The-Whole-Dictionary_509582812-Billion-Photos_FB-e1574101045824.jpg',
+                height: 120,
+                fit: BoxFit.fill,
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -33,26 +35,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text('SIGN ',
-                          style: GoogleFonts.redHatText(
-                              textStyle: TextStyle(
-                            fontSize: 50.0,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.black,
-                          ))),
-                      BorderedText(
-                        strokeWidth: 2,
-                        child: Text(' UP',
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Text('SIGN ',
                             style: GoogleFonts.redHatText(
                                 textStyle: TextStyle(
                               fontSize: 50.0,
                               fontWeight: FontWeight.w900,
-                              color: Colors.white,
+                              color: Colors.black,
                             ))),
-                      ),
-                    ],
+                        BorderedText(
+                          strokeWidth: 2,
+                          child: Text(' UP',
+                              style: GoogleFonts.redHatText(
+                                  textStyle: TextStyle(
+                                fontSize: 50.0,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ))),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 10.0,
@@ -64,7 +68,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       decoration:
                           kTextFieldDecoration.copyWith(hintText: 'Full Name')),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextField(
                       keyboardType: TextInputType.phone,
@@ -74,7 +78,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       decoration: kTextFieldDecoration.copyWith(
                           hintText: 'Number Phone')),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextField(
                       keyboardType: TextInputType.emailAddress,
@@ -84,7 +88,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       decoration:
                           kTextFieldDecoration.copyWith(hintText: 'Email')),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextField(
                       obscureText: true,
@@ -94,7 +98,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       decoration:
                           kTextFieldDecoration.copyWith(hintText: 'Password')),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   CustomButton(
                     textColor: Colors.white,

@@ -15,50 +15,15 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation animation;
-  Animation animationlogo;
   Widget logoText;
+  DecorationImage backgroundimage = DecorationImage(
+    alignment: Alignment.topLeft,
+    image: AssetImage('images/bg_welcomepage.jpg'),
+    fit: BoxFit.fill,
+  );
+
   @override
   void initState() {
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
-    animation = ColorTween(begin: Colors.black12, end: Colors.white)
-        .animate(controller);
-    animationlogo = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-    animationlogo.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        setState(() {
-          logoText = ColorizeAnimatedTextKit(
-              colors: [
-                Color(0xFF8E6CA0),
-                Color(0xFFF9E4B0),
-                Color(0xFF64D6B5),
-                Color(0xFFC3CEE8),
-                Color(0xFFEE799A),
-              ],
-              textAlign: TextAlign.center,
-              isRepeatingAnimation: false,
-              speed: Duration(milliseconds: 300),
-              text: ["MyLibrary"],
-              textStyle: GoogleFonts.josefinSans(
-                textStyle: TextStyle(
-                  fontSize: 42.0,
-                  fontWeight: FontWeight.w900,
-                  color: Color(0xFF8E6CA0),
-                ),
-              ) // or Alignment.topLeft
-              );
-        });
-      }
-    });
-    controller.forward();
-    controller.addListener(() {
-      setState(() {});
-    });
-
     super.initState();
   }
 
@@ -66,43 +31,62 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: animation.value,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              child: Image.asset('images/logo.png'),
-              height: animationlogo.value * 200,
+      body: Container(
+        decoration: BoxDecoration(
+          image: backgroundimage,
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 30),
+                    child: Image.asset('images/logo.png'),
+                    height: 150,
+                  ),
+                ),
+                /*Text(
+                  'MyLibrary',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.josefinSans(
+                    textStyle: TextStyle(
+                      fontSize: 42.0,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),*/
+                SizedBox(
+                  height: 250.0,
+                ),
+                CustomButton(
+                  btnText: 'SIGN UP',
+                  textColor: Colors.white,
+                  btnColor: Colors.black,
+                  onClick: () {
+                    Navigator.pushNamed(context, RegistrationScreen.id);
+                  },
+                ),
+                CustomButton(
+                  btnText: 'LOGIN',
+                  textColor: Colors.black,
+                  btnColor: Colors.white,
+                  onClick: () {
+                    Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                ),
+              ],
             ),
-            (logoText != null) ? logoText : SizedBox(),
-            SizedBox(
-              height: 48.0,
-            ),
-            CustomButton(
-              btnText: 'SIGN UP',
-              textColor: Colors.white,
-              btnColor: Colors.black,
-              onClick: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
-              },
-            ),
-            CustomButton(
-              btnText: 'LOGIN',
-              textColor: Colors.black,
-              btnColor: Colors.white,
-              onClick: () {
-                Navigator.pushNamed(context, LoginScreen.id);
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );

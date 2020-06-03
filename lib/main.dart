@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mylibrary/screens/book_page.dart';
+import 'package:mylibrary/screens/books_screen.dart';
 import 'package:mylibrary/screens/home_screen.dart';
 import 'package:mylibrary/screens/loading_screen.dart';
 import 'package:mylibrary/screens/login_screen.dart';
@@ -12,13 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: LoadingScreen.id,
+      initialRoute: BooksScreen.id,
       routes: {
         LoadingScreen.id: (context) => LoadingScreen(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
         HomeScreen.id: (context) => HomeScreen(),
+        BooksScreen.id: (context) => BooksScreen(),
+        BookPage.id: (context) => BookPage(),
       },
     );
   }
