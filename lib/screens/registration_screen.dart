@@ -22,93 +22,100 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Flexible(
-              child: Image.network(
-                'https://www.rd.com/wp-content/uploads/2017/10/This-Is-How-Long-It-Takes-To-Read-The-Whole-Dictionary_509582812-Billion-Photos_FB-e1574101045824.jpg',
-                height: 120,
-                fit: BoxFit.fill,
+            Expanded(
+              flex: 1,
+              child: Image.asset(
+                'images/banner.jpg',
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Text('SIGN ',
-                            style: GoogleFonts.redHatText(
-                                textStyle: TextStyle(
-                              fontSize: 50.0,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.black,
-                            ))),
-                        BorderedText(
-                          strokeWidth: 2,
-                          child: Text(' UP',
-                              style: GoogleFonts.redHatText(
-                                  textStyle: TextStyle(
-                                fontSize: 50.0,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white,
-                              ))),
-                        ),
-                      ],
+            Expanded(
+              flex: 0,
+              child: Container(
+                padding: EdgeInsets.only(top: 5, right: 15, left: 15),
+                child: Row(
+                  children: <Widget>[
+                    Text('SIGN ',
+                        style: GoogleFonts.redHatText(
+                            textStyle: TextStyle(
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
+                        ))),
+                    BorderedText(
+                      strokeWidth: 2,
+                      child: Text(' UP',
+                          style: GoogleFonts.redHatText(
+                              textStyle: TextStyle(
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          ))),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextField(
-                      onChanged: (value) {
-                        //Do something with the user input.
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: EdgeInsets.only(top: 5, right: 15, left: 15),
+                child: ListView(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    TextField(
+                        onChanged: (value) {
+                          //Do something with the user input.
+                        },
+                        decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Full Name')),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    TextField(
+                        keyboardType: TextInputType.phone,
+                        onChanged: (value) {
+                          //Do something with the user input.
+                        },
+                        decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Number Phone')),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        onChanged: (value) {
+                          //Do something with the user input.
+                        },
+                        decoration:
+                            kTextFieldDecoration.copyWith(hintText: 'Email')),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    TextField(
+                        obscureText: true,
+                        onChanged: (value) {
+                          //Do something with the user input.
+                        },
+                        decoration: kTextFieldDecoration.copyWith(
+                            hintText: 'Password')),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    CustomButton(
+                      textColor: Colors.white,
+                      btnText: 'CREATE ACCOUNT',
+                      btnColor: Colors.black,
+                      onClick: () {
+                        Navigator.pushNamed(context, HomeScreen.id);
                       },
-                      decoration:
-                          kTextFieldDecoration.copyWith(hintText: 'Full Name')),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextField(
-                      keyboardType: TextInputType.phone,
-                      onChanged: (value) {
-                        //Do something with the user input.
-                      },
-                      decoration: kTextFieldDecoration.copyWith(
-                          hintText: 'Number Phone')),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      onChanged: (value) {
-                        //Do something with the user input.
-                      },
-                      decoration:
-                          kTextFieldDecoration.copyWith(hintText: 'Email')),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextField(
-                      obscureText: true,
-                      onChanged: (value) {
-                        //Do something with the user input.
-                      },
-                      decoration:
-                          kTextFieldDecoration.copyWith(hintText: 'Password')),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  CustomButton(
-                    textColor: Colors.white,
-                    btnText: 'CREATE ACCOUNT',
-                    btnColor: Colors.black,
-                    onClick: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
-                    },
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ],

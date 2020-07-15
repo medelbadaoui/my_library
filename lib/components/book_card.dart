@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookCard extends StatelessWidget {
   BookCard(
-      {@required this.bookimageurl,
+      {@required this.bookid,
+      @required this.bookimageurl,
       @required this.bookwriter,
       @required this.booktitle});
+  final String bookid;
   final String bookimageurl;
   final String bookwriter;
   final String booktitle;

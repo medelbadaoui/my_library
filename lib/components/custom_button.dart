@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
           child: MaterialButton(
             onPressed: onClick,
             minWidth: 150.0,
-            height: 60.0,
+            height: 40.0,
             child: Text(
               btnText,
               style: GoogleFonts.redHatText(

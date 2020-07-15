@@ -6,6 +6,12 @@ class BookImageCard extends StatelessWidget {
   final Function onClick;
   @override
   Widget build(BuildContext context) {
+    if (image == null) {
+      return Container(
+        height: 150,
+        width: 90,
+      );
+    }
     return GestureDetector(
       onTap: onClick,
       child: Container(
@@ -21,7 +27,6 @@ class BookImageCard extends StatelessWidget {
           border: Border.all(
             color: Colors.black12,
           ),
-          color: Colors.red,
         ),
       ),
     );
